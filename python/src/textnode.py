@@ -18,6 +18,13 @@ class TextNode:
             and self.text == other.text
             and self.url == other.url
         )
+    def test_to_html_no_children(self):
+        node = LeafNode("p", "Hello, world!")
+        self.assertEqual(node.to_html(), "<p>Hello, world!</p>")
+
+    def test_to_html_no_tag(self):
+        node = LeafNode(None, "Hello, world!")
+        self.assertEqual(node.to_html(), "Hello, world!")
 
     def __repr__(self):
         return f"TextNode({self.text}, {self.text_type}, {self.url})"
